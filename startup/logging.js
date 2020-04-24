@@ -13,9 +13,10 @@ module.exports = function () {
   // winston.createLogger({
   //   transports: [new winston.transports.File({ filename: 'logger.log' })],
   // });
+  const db = process.env.DB_CONNECTION || 'mongodb://localhost:27017/vidly';
   winston.add(
     new winston.transports.MongoDB({
-      db: 'mongodb://localhost:27017/vidly',
+      db: db,
       options: {
         useUnifiedTopology: true,
       },
