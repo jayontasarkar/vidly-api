@@ -40,7 +40,7 @@ router.post('/', [auth], async (req, res) => {
 
   const rental = new Rental({
     customer: _.pick(customer, ['_id', 'name', 'phone']),
-    movie: _.pick(movie, ['_id', 'name', 'dailyRentalRate']),
+    movie: _.pick(movie, ['_id', 'title', 'dailyRentalRate']),
   });
 
   try {

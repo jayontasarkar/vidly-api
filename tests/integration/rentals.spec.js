@@ -17,7 +17,7 @@ describe('/api/rentals', () => {
     },
     movie: {
       _id: movieId,
-      name: '12345',
+      title: '12345',
       dailyRentalRate: 2,
     },
   };

@@ -7,7 +7,7 @@ const auth = require('../middlewares/auth');
 const admin = require('../middlewares/admin');
 
 router.get('/', async (req, res) => {
-  const movies = await Movie.find().sort('name');
+  const movies = await Movie.find().sort('title');
   res.send(movies);
 });
 
@@ -25,7 +25,7 @@ router.post('/', [auth], async (req, res) => {
   if (!genre) return res.status(400).send('Invalid genre!');
 
   const movie = new Movie({
-    name: req.body.name,
+    title: req.body.title,
     genre: {
       _id: genre.id,
       name: genre.name,
@@ -46,7 +46,7 @@ router.put('/:id', [auth, admin, isValidId], async (req, res) => {
   const movie = await Movie.findByIdAndUpdate(
     req.params.id,
     {
-      name: req.body.name,
+      title: req.body.title,
       genre: {
         _id: genre.id,
         name: genre.name,
