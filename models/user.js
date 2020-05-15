@@ -29,7 +29,7 @@ const userSchema = new mongoose.Schema({
 });
 userSchema.methods.generateAuthToken = function () {
   const privateKey = process.env.jWT_PRIVATE_KEY || 'vidly_jwtPrivateKey';
-  const token = jwt.sign({ _id: this._id, isAdmin: this.isAdmin }, privateKey);
+  const token = jwt.sign({ _id: this._id, name: this.name, email: this.email, isAdmin: this.isAdmin }, privateKey);
   return token;
 };
 
